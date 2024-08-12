@@ -1,4 +1,5 @@
 import {
+  Button,
   FormControl,
   InputLabel,
   MenuItem,
@@ -14,15 +15,8 @@ import Box from '@mui/material/Box';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { fetchAllCities, selectCities } from '@/redux/slices/cities';
-
-interface IFilters {
-  destination: string;
-  checkIn: Date | string;
-  checkOut: Date | string;
-  adults: string;
-  children: string;
-  rooms: string;
-}
+import type { IFilters } from '@/appTypes';
+import { fetchAllHotels } from '@/redux/slices/hotels';
 
 const Filters = () => {
   const destinations = useAppSelector(selectCities);
@@ -42,9 +36,12 @@ const Filters = () => {
   };
 
   useEffect(() => {
-    console.log('xaxa');
-    dispatch(fetchAllCities(filters));
+    dispatch(fetchAllCities());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAllHotels(filters));
+  }, [filters, dispatch]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -55,6 +52,7 @@ const Filters = () => {
         sx={{
           paddingBottom: 2,
           display: 'flex',
+          flexWrap: 'wrap',
           gap: '10px',
           alignItems: 'flex-end',
         }}
@@ -126,6 +124,16 @@ const Filters = () => {
             <MenuItem value={3}>3</MenuItem>
             <MenuItem value={4}>4</MenuItem>
           </Select>
+        </FormControl>
+        <FormControl variant="standard" sx={{ minWidth: 120 }}>
+          <Button
+            onClick={() => dispatch(fetchAllHotels(filters))}
+            size="small"
+            variant="contained"
+            sx={{ color: 'white' }}
+          >
+            Search
+          </Button>
         </FormControl>
       </Box>
     </LocalizationProvider>

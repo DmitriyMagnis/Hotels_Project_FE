@@ -1,8 +1,6 @@
-import { useAppSelector } from '@/redux/hooks';
-import { selectHotels } from '@/redux/slices/hotels';
-import { ExpandMore } from '@mui/icons-material';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { fetchAllHotels, selectHotels } from '@/redux/slices/hotels';
 import {
-  Avatar,
   Button,
   Card,
   CardActions,
@@ -10,22 +8,17 @@ import {
   CardHeader,
   CardMedia,
   IconButton,
-  Paper,
   Typography,
 } from '@mui/material';
-import { red } from '@mui/material/colors';
 import Grid from '@mui/material/Grid';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ShareIcon from '@mui/icons-material/Share';
 import { generateImageUrl } from '@/utils/helpers';
 
 const HotelsList = () => {
   const hotels = useAppSelector(selectHotels);
-  console.log(hotels);
+
   return (
-    <Grid container>
+    <Grid container spacing={1}>
       {hotels.map(hotel => (
         <Grid item xs={12} sm={6} md={4} key={hotel.id}>
           <Card>

@@ -23,8 +23,8 @@ export const citiesSlice = createSlice({
     setCitiesLoader(state, action: PayloadAction<STATUSES>) {
       state.status = action.payload;
     },
-    putHotels(state, action: PayloadAction<ICities[]>) {
-      state.items.concat(action.payload);
+    putCities(state, action: PayloadAction<ICities[]>) {
+      state.items = action.payload;
     },
   },
 
@@ -33,7 +33,7 @@ export const citiesSlice = createSlice({
   },
 });
 
-export const fetchAllCities = createAction<any>('FETCH_CITIES');
+export const fetchAllCities = createAction('FETCH_CITIES');
 
-export const { putHotels, setCitiesLoader } = citiesSlice.actions;
+export const { putCities, setCitiesLoader } = citiesSlice.actions;
 export const { selectCities } = citiesSlice.selectors;
