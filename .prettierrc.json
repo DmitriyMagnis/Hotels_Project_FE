@@ -1,4 +1,12 @@
 {
-  "semi": false,
-  "arrowParens": "avoid"
+  "semi": true,
+  "arrowParens": "avoid",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "singleQuote": true,
+  "singleAttributePerLine": false,
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "endOfLine": "lf"
 }
