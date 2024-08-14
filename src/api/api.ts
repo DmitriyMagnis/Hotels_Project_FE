@@ -20,10 +20,10 @@ const makeApi = (config: CreateAxiosDefaults) => {
 
 const api = makeApi({
   baseURL: import.meta.env.VITE_API_URL,
-  timeout: 1000,
+  timeout: 2000,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: 'Bearer some token',
+    Authorization: 'Bearer some_token',
   },
 });
 

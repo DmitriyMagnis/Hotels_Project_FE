@@ -3,6 +3,7 @@ export const generateImageUrl = (id: string): string | undefined =>
 
 export const omitEmptyParams = (params: Record<string, any>) => {
   let omitedParams: Record<string, any> = {};
+
   for (let param in params) {
     if (
       params[param] !== undefined &&
